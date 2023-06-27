@@ -1,28 +1,62 @@
-print("Welcome to Robo Barista Cafe!")
+import tkinter as tk
 
-name = input("What is your name? ")
+def display_order():
+    name = name_entry.get()
+    menu = menu_var.get()
+    quantity = int(quantity_entry.get())
+    price = 8
+    total = price * quantity
+    order_text = f"Name: {name}\n"
+    order_text += f"Menu: {menu}\n"
+    order_text += f"Quantity: {quantity}\n"
+    order_text += f"Total: ${total}"
+    order_label.config(text=order_text)
 
-print(f"Hello, {name}! What do you want to order?")
+def clear_fields():
+    name_entry.delete(0, tk.END)
+    menu_var.set("1")
+    quantity_entry.delete(0, tk.END)
 
-menu = input("We have Java coffee, coffee with milk, and normal coffee. What do you want to order? ")
-price = 8
+window = tk.Tk()
+window.title("Robo Barista Cafe")
 
-quantity = int(input("How many coffees would you like? "))
+welcome_label = tk.Label(window, text="Welcome to Robo Barista Cafe!", font=("Helvetica", 16))
+welcome_label.pack(pady=10)
 
-total = price * quantity 
+name_label = tk.Label(window, text="What is your name?")
+name_label.pack()
+name_entry = tk.Entry(window)
+name_entry.pack()
 
-print("Thank you, your total is $:", total)
-print("Sounds good, " + name + "! We'll have your " + str(quantity) + " coffee(s) ready for you in a moment.") 
-print ("Do you want more one thing?")
+menu_label = tk.Label(window, text="What do you want to order?")
+menu_label.pack()
 
-reply = input ("Type here: ") 
+menu_var = tk.StringVar()
+menu_var.set("1")
 
-if reply == "no" or reply=="No":
-        print ("Ok sir have a nice day" )
+menu_options = [
+    ("Java coffee", "1"),
+    ("Coffee with milk", "2"),
+    ("Normal coffee", "3"),
+    ("Strong coffee", "4")
+]
 
-if reply == "yes" or reply== "Yes":
-        print ("Okay what do you want more" )
-        print("Thank you for coming to Robo Barista Cafe, " + name + "! We hope to see you again soon!")
+for text, value in menu_options:
+    menu_radio = tk.Radiobutton(window, text=text, variable=menu_var, value=value)
+    menu_radio.pack()
 
-        more = input ("we also have water and pizza") 
-        print ("Ok sir, we have " + more + " in our menu")
+quantity_label = tk.Label(window, text="How many coffees would you like?")
+quantity_label.pack()
+quantity_entry = tk.Entry(window)
+quantity_entry.pack()
+
+order_button = tk.Button(window, text="Place Order", command=display_order)
+order_button.pack(pady=10)
+
+order_label = tk.Label(window, text="")
+order_label.pack()
+
+clear_button = tk.Button(window, text="Clear Fields", command=clear_fields)
+clear_button.pack(pady=10)
+
+window.mainloop()
