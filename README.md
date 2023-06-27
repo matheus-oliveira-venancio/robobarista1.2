@@ -2,7 +2,7 @@
 #update
 
 
-#update 1.3 mudei o codigo inteiro para português vamos focar em cafeterias brasileiras primeiro.
+#update 1.2.2 mudei o codigo inteiro para português vamos focar em cafeterias brasileiras primeiro.
 
 descomentei algumas linhas tambem 
 
