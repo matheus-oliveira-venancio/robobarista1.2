@@ -1,9 +1,9 @@
 import tkinter as tk
 
-def display_order():
+def display_order(): 
     name = name_entry.get()
-    menu = menu_var.get()
-    quantity = int(quantity_entry.get())
+    menu = menu_var.get() 
+    quantity = int(quantity_entry.get()) 
     price = 8
     total = price * quantity
     order_text = f"Name: {name}\n"
@@ -20,15 +20,15 @@ def clear_fields():
 window = tk.Tk()
 window.title("Robo Barista Cafe")
 
-welcome_label = tk.Label(window, text="Welcome to Robo Barista Cafe!", font=("Helvetica", 16))
+welcome_label = tk.Label(window, text="Bem vindo a cafeteria robo barista!", font=("Helvetica", 16))
 welcome_label.pack(pady=10)
 
-name_label = tk.Label(window, text="What is your name?")
+name_label = tk.Label(window, text="Qual o seu nome")
 name_label.pack()
 name_entry = tk.Entry(window)
 name_entry.pack()
 
-menu_label = tk.Label(window, text="What do you want to order?")
+menu_label = tk.Label(window, text="O que voce deseja pedir hoje?")
 menu_label.pack()
 
 menu_var = tk.StringVar()
@@ -36,27 +36,29 @@ menu_var.set("1")
 
 menu_options = [
     ("Java coffee", "1"),
-    ("Coffee with milk", "2"),
-    ("Normal coffee", "3"),
-    ("Strong coffee", "4")
+    ("Café com leite", "2"),
+    ("Café preto", "3"),
+    ("Café", "4")
 ]
+
+# Menu_options  vai listar as opçoes com o numeral 1 2 3 4, ira listar o numero exato do pedido 
 
 for text, value in menu_options:
     menu_radio = tk.Radiobutton(window, text=text, variable=menu_var, value=value)
-    menu_radio.pack()
+    menu_radio.pack() 
 
-quantity_label = tk.Label(window, text="How many coffees would you like?")
-quantity_label.pack()
+quantity_label = tk.Label(window, text="Quantos cafes voce gostaria?")
+quantity_label.pack() 
 quantity_entry = tk.Entry(window)
 quantity_entry.pack()
 
-order_button = tk.Button(window, text="Place Order", command=display_order)
-order_button.pack(pady=10)
+order_button = tk.Button(window, text="Fazer pedido", command=display_order)
+order_button.pack(pady=10) 
 
 order_label = tk.Label(window, text="")
 order_label.pack()
 
-clear_button = tk.Button(window, text="Clear Fields", command=clear_fields)
+clear_button = tk.Button(window, text="Limpar campos", command=clear_fields)
 clear_button.pack(pady=10)
 
 window.mainloop()
