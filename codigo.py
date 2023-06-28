@@ -34,21 +34,21 @@ menu_label.grid(row=2, column=0)
 menu_var = tk.StringVar()
 menu_var.set("1")
 
-menu_options = [
-    ("Cafe expresso", "1"),
-    ("Café com leite", "2"),
-    ("Café preto", "3"),
-    ("Café", "4"),
-    ("Coca Cola", "5"),
-    ("Agua", "6"),
-    ("Agua com gas", "7"),
-    ("Vinho", "8"),
-    ("Pepsi", "9"),
-    ("Suco de laranja", "10"),
-    ("Suco de maça", "11"),
+menu_options = [ 
+    ("Café Filtrado", "1"),
+    ("Café Americano", "2"),
+    ("Café com Leite", "3"),
+    ("Café Latte", "4"),
+    ("Flat White", "5"),
+    ("Café Mocha", "6"),
+    ("Café Mocha Branco", "7"),
+    ("Doce de Leite Latte", "8"),
+    ("Baunilha Latte", "9"),
+    ("Caramelo Macchiato", "10"),
+    ("Brigadeiro Latte", "11"),
     ("suco de pessego", "12"),
     ("Leite c/achocolatado", "13"),
-    ("Chocolate quente", "14"),
+    ("Chocolate quente", "14"), 
 ]   #parte de bebidas finalizada 
 
 menu_row = 3
@@ -71,7 +71,24 @@ order_label.grid(row=menu_row+2, column=0, columnspan=2)
 menu_label = tk.Label(window, text="Voce deseja mais alguma coisa para comer?")
 menu_label.grid(row=menu_row+3, column=0)
 
+# Opções de comida
+food_options = [
+    ("Pizza", "15"),
+    ("Hambúrguer", "16"),
+    ("Salada", "17"),
+    ("Pao", "18"),
+    ("Bolo de cenoura", "19"),
+    ("Rosca", "20"),
+    #Opçoes de comida finalizada
+]
+
+food_row = menu_row + 4
+for text, value in food_options:
+    food_radio = tk.Radiobutton(window, text=text, variable=menu_var, value=value)
+    food_radio.grid(row=food_row, column=0, sticky="w")
+    food_row += 1
+
 clear_button = tk.Button(window, text="Limpar campos", command=clear_fields)
-clear_button.grid(row=menu_row+4, column=0, pady=10)
+clear_button.grid(row=food_row, column=0, pady=10)
 
 window.mainloop()
